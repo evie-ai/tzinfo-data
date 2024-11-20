@@ -13,7 +13,7 @@ module TZInfo
           timezone 'Asia/Ho_Chi_Minh' do |tz|
             tz.offset :o0, 25590, 0, :LMT
             tz.offset :o1, 25590, 0, :PLMT
-            tz.offset :o2, 25200, 0, :'+07'
+            tz.offset :o2, 25200, 0, :ICT
             tz.offset :o3, 28800, 0, :'+08'
             tz.offset :o4, 32400, 0, :'+09'
             

@@ -12,7 +12,7 @@ module TZInfo
           
           timezone 'America/Guyana' do |tz|
             tz.offset :o0, -13959, 0, :LMT
-            tz.offset :o1, -14400, 0, :'-04'
+            tz.offset :o1, -14400, 0, :GYT
             tz.offset :o2, -13500, 0, :'-0345'
             tz.offset :o3, -10800, 0, :'-03'
             

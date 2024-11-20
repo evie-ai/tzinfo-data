@@ -12,7 +12,7 @@ module TZInfo
           
           timezone 'America/Araguaina' do |tz|
             tz.offset :o0, -11568, 0, :LMT
-            tz.offset :o1, -10800, 0, :'-03'
+            tz.offset :o1, -10800, 0, :BRT
             tz.offset :o2, -10800, 3600, :'-02'
             
             tz.transition 1914, 1, :o1, -1767214032, 4356240541, 1800

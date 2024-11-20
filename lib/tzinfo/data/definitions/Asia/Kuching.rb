@@ -13,7 +13,7 @@ module TZInfo
           timezone 'Asia/Kuching' do |tz|
             tz.offset :o0, 26480, 0, :LMT
             tz.offset :o1, 27000, 0, :'+0730'
-            tz.offset :o2, 28800, 0, :'+08'
+            tz.offset :o2, 28800, 0, :MYT
             tz.offset :o3, 28800, 1200, :'+0820'
             tz.offset :o4, 32400, 0, :'+09'
             

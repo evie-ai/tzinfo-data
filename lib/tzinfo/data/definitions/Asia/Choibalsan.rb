@@ -13,7 +13,7 @@ module TZInfo
           timezone 'Asia/Choibalsan' do |tz|
             tz.offset :o0, 27480, 0, :LMT
             tz.offset :o1, 25200, 0, :'+07'
-            tz.offset :o2, 28800, 0, :'+08'
+            tz.offset :o2, 28800, 0, :CHOT
             tz.offset :o3, 32400, 3600, :'+10'
             tz.offset :o4, 32400, 0, :'+09'
             tz.offset :o5, 28800, 3600, :'+09'

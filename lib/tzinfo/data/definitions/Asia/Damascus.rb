@@ -13,8 +13,8 @@ module TZInfo
           timezone 'Asia/Damascus' do |tz|
             tz.offset :o0, 8712, 0, :LMT
             tz.offset :o1, 7200, 0, :EET
-            tz.offset :o2, 7200, 3600, :EEST
-            tz.offset :o3, 10800, 0, :'+03'
+            tz.offset :o2, 7200, 3600, :'+02'
+            tz.offset :o3, 10800, 0, :EEST
             
             tz.transition 1919, 12, :o1, -1577931912, 2906789279, 1200
             tz.transition 1920, 4, :o2, -1568592000, 4844865, 2

@@ -13,7 +13,7 @@ module TZInfo
           timezone 'Asia/Chita' do |tz|
             tz.offset :o0, 27232, 0, :LMT
             tz.offset :o1, 28800, 0, :'+08'
-            tz.offset :o2, 32400, 0, :'+09'
+            tz.offset :o2, 32400, 0, :YAKT
             tz.offset :o3, 32400, 3600, :'+10'
             tz.offset :o4, 28800, 3600, :'+09'
             tz.offset :o5, 36000, 0, :'+10'

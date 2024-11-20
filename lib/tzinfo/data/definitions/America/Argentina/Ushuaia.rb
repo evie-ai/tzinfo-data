@@ -16,7 +16,7 @@ module TZInfo
               tz.offset :o1, -15408, 0, :CMT
               tz.offset :o2, -14400, 0, :'-04'
               tz.offset :o3, -14400, 3600, :'-03'
-              tz.offset :o4, -10800, 0, :'-03'
+              tz.offset :o4, -10800, 0, :ART
               tz.offset :o5, -10800, 3600, :'-02'
               
               tz.transition 1894, 10, :o1, -2372095608, 8687277683, 3600

@@ -15,8 +15,8 @@ module TZInfo
             tz.offset :o1, 40320, 0, :'+1112'
             tz.offset :o2, 41400, 0, :'+1130'
             tz.offset :o3, 41400, 3600, :'+1230'
-            tz.offset :o4, 39600, 0, :'+11'
-            tz.offset :o5, 39600, 3600, :'+12'
+            tz.offset :o4, 39600, 0, :NFT
+            tz.offset :o5, 39600, 3600, :NFDT
             
             tz.transition 1900, 12, :o1, -2177493112, 26086158361, 10800
             tz.transition 1950, 12, :o2, -599656320, 73009411, 30
