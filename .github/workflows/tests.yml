@@ -7,12 +7,12 @@ jobs:
     name: ${{ matrix.ruby }} with TZInfo ${{ matrix.tzinfo }}${{ matrix.name_suffix }}
     strategy:
       matrix:
-        ruby: ['1.9.3', '3.2', jruby-9.0, jruby-9.4]
+        ruby: ['1.9.3', '3.4', jruby-9.0, jruby-9.4]
         tzinfo: [v1, v2]
         name_suffix: ['']
         experimental: [false]
         include:
-          - ruby: '3.2'
+          - ruby: '3.4'
             tzinfo: head
             name_suffix: ' (experimental)'
             experimental: true
@@ -33,18 +33,18 @@ jobs:
             name_suffix: ' (experimental)'
             experimental: true
       fail-fast: false
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     continue-on-error: ${{ matrix.experimental }}
     env:
       TZINFO_GEM: ${{ matrix.tzinfo }}
     steps:
-      - uses: actions/checkout@v3
-      - if: startsWith(matrix.ruby, 'jruby-9.0')
+      - uses: actions/checkout@v4
+      - if: startsWith(matrix.ruby, '1.') || startsWith(matrix.ruby, 'jruby-9.0')
         uses: philr/setup-ruby@legacy-v1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-      - if: ${{ !startsWith(matrix.ruby, 'jruby-9.0') }}
+      - if: ${{ !(startsWith(matrix.ruby, '1.') || startsWith(matrix.ruby, 'jruby-9.0')) }}
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
@@ -52,6 +52,21 @@ jobs:
       - run: ruby --version
       - run: gem --version
       - run: bundle --version
+      - if: ${{ startsWith(matrix.ruby, 'jruby-9.0') }}
+        name: Update jruby-openssl
+        run: |
+          curl --output /tmp/jruby-openssl-0.11.0-java.gem --retry 5 https://rubygems.org/downloads/jruby-openssl-0.11.0-java.gem
+          hash=`sha256sum /tmp/jruby-openssl-0.11.0-java.gem | cut -d' ' -f1`
+          echo "SHA-256 hash: $hash"
+          if [[ "$hash" -eq a5ea2b925d49522ffbf191a591930c826d4e8c3e1550eaae8448ca6b0ad3169c ]]
+          then
+            gem install /tmp/jruby-openssl-0.11.0-java.gem --no-document
+            rm /tmp/jruby-openssl-0.11.0-java.gem
+          else
+            echo 'SHA-256 hash did not match.' 1>&2
+            rm /tmp/jruby-openssl-0.11.0-java.gem
+            exit 1
+          fi
       - id: determine_tzdata_version
         name: Determine tzdata version
         run: echo "tzdata_version=`ruby -r bundler/setup -r tzinfo/data -e 'puts TZInfo::Data::Version::TZDATA'`" >> $GITHUB_OUTPUT
@@ -61,7 +76,7 @@ jobs:
           echo "os=`lsb_release -si`" >> $GITHUB_OUTPUT
           echo "os_version=`lsb_release -sr`" >> $GITHUB_OUTPUT
       - name: Cache tzdb
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: tzdb
           key: tzdb-${{ steps.determine_os_version.outputs.os }}-${{ steps.determine_os_version.outputs.os_version }}-${{ steps.determine_tzdata_version.outputs.tzdata_version }}

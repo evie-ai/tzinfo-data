@@ -18,9 +18,9 @@ module TZInfo
             tz.offset :o4, -21600, 3600, :CDT
             
             tz.transition 1922, 1, :o1, -1514739600, 58153339, 24
-            tz.transition 1927, 6, :o2, -1343066400, 9700171, 4
+            tz.transition 1927, 6, :o2, -1343149200, 58201003, 24
             tz.transition 1930, 11, :o1, -1234807200, 9705183, 4
-            tz.transition 1931, 5, :o3, -1220292000, 9705855, 4
+            tz.transition 1931, 4, :o3, -1220461200, 58235083, 24
             tz.transition 1931, 10, :o1, -1207159200, 9706463, 4
             tz.transition 1932, 4, :o2, -1191344400, 58243171, 24
             tz.transition 1996, 4, :o4, 828864000
@@ -179,6 +179,10 @@ module TZInfo
             tz.transition 2072, 11, :o2, 3245641200, 59475667, 24
             tz.transition 2073, 3, :o4, 3256531200, 14869673, 6
             tz.transition 2073, 11, :o2, 3277090800, 59484403, 24
+            tz.transition 2074, 3, :o4, 3287980800, 14871857, 6
+            tz.transition 2074, 11, :o2, 3308540400, 59493139, 24
+            tz.transition 2075, 3, :o4, 3319430400, 14874041, 6
+            tz.transition 2075, 11, :o2, 3339990000, 59501875, 24
           end
         end
       end
